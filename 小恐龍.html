@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小恐龍遊戲</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { text-align: center; font-family: Arial, sans-serif; }
+        canvas { background: #f4f4f4; display: block; margin: auto; }
+        #score { font-size: 20px; margin-top: 10px; }
+        #gameOverScreen {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>小恐龍遊戲</h1>
+    <p>按 <strong>空白鍵</strong> 控制恐龍跳躍！</p>
+    <canvas id="gameCanvas" width="800" height="200"></canvas>
+    <p id="score">分數: 0</p>
+
+    <!-- 遊戲結束畫面 -->
+    <div id="gameOverScreen">
+        <h2>遊戲結束！</h2>
+        <p id="finalScore">你的分數: 0</p>
+        <button onclick="restartGame()">重新開始</button>
+    </div>
+
+    <script>
+        // 取得畫布和畫布內容
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // 遊戲變數
+        let dino = { x: 50, y: 150, width: 40, height: 40, velocityY: 0, gravity: 0.6, isJumping: false };
+        let cactus = { x: 800, y: 150, width: 20, height: 40 };
+        let score = 0;
+        let gameRunning = true;
+
+        // 監聽鍵盤事件
+        document.addEventListener("keydown", function(event) {
+            if (event.code === "Space" && !dino.isJumping) {
+                dino.velocityY = -10; // 跳躍力量
+                dino.isJumping = true;
+            }
+        });
+
+        // 遊戲主迴圈
+        function update() {
+            if (!gameRunning) return;
+
+            // 更新恐龍位置
+            dino.velocityY += dino.gravity;
+            dino.y += dino.velocityY;
+            if (dino.y > 150) { // 碰到地面
+                dino.y = 150;
+                dino.isJumping = false;
+            }
+
+            // 移動仙人掌
+            cactus.x -= 5;
+            if (cactus.x < -cactus.width) { // 仙人掌超出畫面
+                cactus.x = 800 + Math.random() * 200; // 重新生成
+                score++; // 加分
+                document.getElementById("score").innerText = "分數: " + score;
+            }
+
+            // 碰撞檢測
+            if (dino.x < cactus.x + cactus.width && dino.x + dino.width > cactus.x &&
+                dino.y < cactus.y + cactus.height && dino.y + dino.height > cactus.y) {
+                gameOver();
+            }
+
+            draw();
+            requestAnimationFrame(update);
+        }
+
+        // 繪製畫面
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 畫地面
+            ctx.fillStyle = "#666";
+            ctx.fillRect(0, 190, canvas.width, 10);
+
+            // 畫恐龍
+            ctx.fillStyle = "#007700";
+            ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
+
+            // 畫仙人掌
+            ctx.fillStyle = "#993300";
+            ctx.fillRect(cactus.x, cactus.y, cactus.width, cactus.height);
+        }
+
+        // 遊戲結束（不刷新畫面）
+        function gameOver() {
+            gameRunning = false;
+            document.getElementById("finalScore").innerText = "你的分數: " + score;
+            document.getElementById("gameOverScreen").style.display = "block";
+        }
+
+        // 重新開始遊戲
+        function restartGame() {
+            score = 0;
+            dino.y = 150;
+            dino.velocityY = 0;
+            cactus.x = 800;
+            gameRunning = true;
+            document.getElementById("score").innerText = "分數: 0";
+            document.getElementById("gameOverScreen").style.display = "none";
+            update();
+        }
+
+        // 開始遊戲
+        update();
+    </script>
+</body>
+</html>
