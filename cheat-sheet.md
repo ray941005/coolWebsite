@@ -44,6 +44,10 @@
 
    發佈至遠端指定的分支（Branch）
 
+* `git pull`
+
+   用於從遠程更新 Repository 的本地版本。
+
 * `git branch`
 
    查看分支。
