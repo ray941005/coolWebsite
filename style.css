@@ -113,7 +113,12 @@ a {
   color: #fff;
   padding-bottom: .5em;
   margin-bottom: .5em;
-  border-bottom: 1px dotted #fff;
+  display: flex;
+  /* 水平置中 */
+  justify-content: center;    
+  /* 垂直置中 */
+  align-content: center; 
+  /* border-bottom: 1px dotted #fff; */
 }
 
 .item li {
@@ -124,6 +129,11 @@ a {
   color: #fff;
   text-decoration: none;
   transition: .3s;
+  display: flex;
+  /* 水平置中 */
+  justify-content: center;    
+  /* 垂直置中 */
+  align-content: center; 
 }
 
 .item h3 a:hover {
