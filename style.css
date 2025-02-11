@@ -61,9 +61,9 @@ a {
   background-color: rgb(110, 156, 186);
 }
 
-.main-header h1:hover {
+/* .main-header h1:hover {
   background-color: rgb(110, 156, 186);
-}
+} */
 
 .main-menu>li:hover::after {
   left: 0;
