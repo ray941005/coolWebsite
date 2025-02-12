@@ -104,6 +104,29 @@ a {
 .main-menu li:hover .sub-menu {
   display: flex;
 }
+/*軀幹切版*/
+.columns-container {
+  display: flex; /* 讓內部的 .column 自動平分空間 */
+  width: 100vw;  /* 確保父層寬度填滿畫面 */
+  height: 70vh; /* 滿版高度 */
+}
+
+.column {
+  flex: 1; /* 讓三欄等比例填滿 */
+  height: 70vh;
+}
+
+.column_1 {
+  background-color: #7C7C7C;
+}
+
+.column_2 {
+  background-color: rgb(226, 129, 129);
+}
+
+.column_3 {
+  background-color: #5ed8c0;
+}
 /*以下為頁尾特效*/
 .main-footer {
   display: flex;
