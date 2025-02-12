@@ -106,13 +106,13 @@ a {
 }
 /*軀幹切版*/
 .columns-container {
-  display: flex; /* 讓內部的 .column 自動平分空間 */
-  width: 100vw;  /* 確保父層寬度填滿畫面 */
-  height: 70vh; /* 滿版高度 */
+  display: flex; 
+  width: 100vw;  
+  height: 70vh; 
 }
 
 .column {
-  flex: 1; /* 讓三欄等比例填滿 */
+  flex: 1; 
   height: 70vh;
 }
 
@@ -126,6 +126,26 @@ a {
 
 .column_3 {
   background-color: #5ed8c0;
+}
+/*三欄按鈕特效*/
+.column-button{
+  width: 33.3vw;
+  height: 5vh;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  line-height: 40px;
+  color: #000;
+  background-color: transparent;
+  border: 1px solid #000;
+  transition: all .3s linear;
+  position: relative;
+  top: 65vh;  
+  left: 0; 
+}
+.column-button:hover{
+  background-color: #000;
+  color: #fff;
 }
 /*以下為頁尾特效*/
 .main-footer {
