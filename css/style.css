@@ -130,7 +130,7 @@ a {
 }
 /*三欄按鈕特效*/
 .column-button{
-  width: 100%;
+  width: auto;
   height: 5vh;
   display: block;
   text-align: center;
