@@ -147,6 +147,14 @@ a {
   background-color: #000;
   color: #fff;
 }
+.column-button a{
+
+  color: #000 !important;
+}
+.column-button a:hover{
+
+  color: #fff !important;
+}
 /*以下為頁尾特效*/
 .main-footer {
   display: flex;
