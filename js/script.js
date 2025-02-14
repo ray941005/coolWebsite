@@ -9,19 +9,28 @@ function loadPage() {
     fetch('board.html')
       .then(response => response.text())
       .then(data => {
-        content.innerHTML = data;
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, "text/html");
+    
+        content.innerHTML = doc.body.innerHTML; // 只取 <body> 內的部分
       });
   } else if (hash === "#events") {
     fetch('events.html')
       .then(response => response.text())
       .then(data => {
-        content.innerHTML = data;
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, "text/html");
+    
+        content.innerHTML = doc.body.innerHTML; // 只取 <body> 內的部分
       });
   } else if (hash === "#story") {
     fetch('story.html')
       .then(response => response.text())
       .then(data => {
-        content.innerHTML = data;
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, "text/html");
+    
+        content.innerHTML = doc.body.innerHTML; // 只取 <body> 內的部分
       });
   } else {
     content.innerHTML = originalContent;
