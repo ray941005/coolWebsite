@@ -6,13 +6,13 @@ function loadPage() {
 
   // 動態載入不同頁面的 HTML
   if (hash === "#board") {
-    fetch('../board.html')
+    fetch('board.html')
       .then(response => response.text())
       .then(data => {
         content.innerHTML = data;
       });
   } else if (hash === "#events") {
-    fetch('../events.html')
+    fetch('events.html')
       .then(response => response.text())
       .then(data => {
         content.innerHTML = data;
