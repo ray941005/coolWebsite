@@ -11,8 +11,12 @@ function loadPage() {
       .then(data => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, "text/html");
-    
         content.innerHTML = doc.body.innerHTML; // 只取 <body> 內的部分
+
+        let link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "css/Board.css";  // 改成你的 board.css 路徑
+        document.head.appendChild(link); // 把 CSS 加到 head 裡
       });
   } else if (hash === "#events") {
     fetch('pages/events.html')
