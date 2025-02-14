@@ -6,7 +6,7 @@ function loadPage() {
 
   // 動態載入不同頁面的 HTML
   if (hash === "#board") {
-    fetch('/pages/board.html')
+    fetch('pages/board.html')
       .then(response => response.text())
       .then(data => {
         const parser = new DOMParser();
@@ -15,7 +15,7 @@ function loadPage() {
         content.innerHTML = doc.body.innerHTML; // 只取 <body> 內的部分
       });
   } else if (hash === "#events") {
-    fetch('/pages/events.html')
+    fetch('pages/events.html')
       .then(response => response.text())
       .then(data => {
         const parser = new DOMParser();
