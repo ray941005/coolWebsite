@@ -1,0 +1,11 @@
+.line h3 {
+    background-color: #4181b2;
+    color: #fff;
+    font-size: 40px;
+    display: flex;
+    /* 水平置中 */
+    justify-content: center;    
+    /* 垂直置中 */
+    /*align-content: center;*/ 
+    /* border-bottom: 1px dotted #fff; */
+  }

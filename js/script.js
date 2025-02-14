@@ -15,7 +15,7 @@ function loadPage() {
 
         let link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = "css/Board.css";  // 改成你的 board.css 路徑
+        link.href = "css/Board.css";  // 改成你的 Board.css 路徑
         document.head.appendChild(link); // 把 CSS 加到 head 裡
       });
   } else if (hash === "#events") {
@@ -24,17 +24,25 @@ function loadPage() {
       .then(data => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, "text/html");
-    
         content.innerHTML = doc.body.innerHTML; // 只取 <body> 內的部分
+
+        let link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "css/Events.css";  // 改成你的 Events.css 路徑
+        document.head.appendChild(link); // 把 CSS 加到 head 裡
       });
   } else if (hash === "#story") {
-    fetch('story.html')
+    fetch('pages/story.html')
       .then(response => response.text())
       .then(data => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, "text/html");
-    
         content.innerHTML = doc.body.innerHTML; // 只取 <body> 內的部分
+
+        let link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "css/Story.css";  // 改成你的 Story.css 路徑
+        document.head.appendChild(link); // 把 CSS 加到 head 裡
       });
   } else {
     content.innerHTML = originalContent;
